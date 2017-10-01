@@ -11,6 +11,8 @@ def validate():
     username_error = ""
     password = request.form['password']
     password_error = ""
+    verify = request.form['verify']
+    verify_error = ""
 
     if username == "":
         username_error = "Please enter a valid username."
@@ -18,13 +20,17 @@ def validate():
     if password == "":
         password_error = "Please enter a valid password."
 
-    return redirect('/?ue=' + username_error + "&pe=" + password_error)
+    if verify == "":
+        verify_error = "Please correctly re-enter your password."
+
+    return redirect('/?ue=' + username_error + "&pe=" + password_error + "&ve=" + verify_error)
 
 @app.route('/')
 def index():
     username_error=request.args.get('ue')
     password_error=request.args.get('pe')
-    return render_template('index.html', username_error=username_error, password_error=password_error)
+    verify_error=request.args.get('ve')
+    return render_template('index.html', username_error=username_error, password_error=password_error, verify_error=verify_error)
 
 
 app.run()

@@ -20,6 +20,9 @@
         <br/>
         <label>Verify Password</label>
         <input type="password" name="verify"/>
+        {% if verify_error != none %}
+            {{verify_error}}
+        {% endif %}
         <br/>
         <label>Email (optional)</label>
         <input type="email" name="email"/>
