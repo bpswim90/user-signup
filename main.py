@@ -15,13 +15,13 @@ def validate():
     password_error = ""
     verify_error = ""
 
-    if username == "":
+    if username == "" or " " in username or len(username) < 3 or len(username) > 20:
         username_error = "Please enter a valid username."
 
-    if password == "":
+    if password == "" or " " in password or len(password) < 3 or len(password) > 20:
         password_error = "Please enter a valid password."
 
-    if verify == "":
+    if verify == "" or verify != password:
         verify_error = "Please correctly re-enter your password."
 
     return render_template('index.html', username_error=username_error, password_error=password_error, verify_error=verify_error)
