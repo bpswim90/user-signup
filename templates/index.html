@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <title>User Signup</title>
+    </head>
+    <body>
+        <h1>Signup</h1>
+        <form action="/validate" method="POST">
+        <label>Username</label>
+        <input type="text" name="username"/>
+        {% if username_error != none %}
+            {{username_error}}
+        {% endif %}
+        <br/>
+        <label>Password</label>
+        <input type="password" name="password"/>
+        {% if password_error != none %}
+            {{password_error}}
+        {% endif %}
+        <br/>
+        <label>Verify Password</label>
+        <input type="password" name="verify"/>
+        <br/>
+        <label>Email (optional)</label>
+        <input type="email" name="email"/>
+        <br/>
+        <input type="submit" value="Submit"/>
+        </form>
+    </body>
+</html>
