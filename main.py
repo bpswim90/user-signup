@@ -19,6 +19,7 @@ def validate():
 
     if username == "" or " " in username or len(username) < 3 or len(username) > 20:
         username_error = "Please enter a valid username."
+        username = ""
 
     if password == "" or " " in password or len(password) < 3 or len(password) > 20:
         password_error = "Please enter a valid password."
@@ -30,8 +31,9 @@ def validate():
         email_error = ""
     elif email.count("@") != 1 or email.count(".") != 1 or " " in email or len(email) < 3 or len(email) > 20:
         email_error = "Invalid e-mail address."
+        email = ""
 
-    return render_template('index.html', username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error)
+    return render_template('index.html', username=username, email=email, username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error)
 
 @app.route('/')
 def index():
