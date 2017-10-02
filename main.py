@@ -36,15 +36,15 @@ def validate():
     if not username_error and not password_error and not verify_error and not email_error:
         return redirect('/welcome?username=' + username)
     else:
-        return render_template('index.html', username=username, email=email, username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error)
+        return render_template('index.html', title='User Signup', username=username, email=email, username_error=username_error, password_error=password_error, verify_error=verify_error, email_error=email_error)
 
 @app.route('/welcome')
 def welcome():
     username = request.args.get('username')
-    return render_template('welcome.html', username=username)
+    return render_template('welcome.html', title='Welcome!', username=username)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title='User Signup')
 
 app.run()
